@@ -10,10 +10,9 @@ int main(int argc, char* argv[])
 
 	SetConsoleTitleA(random_string(10).c_str());
 
-	//proc_kill();
 	ascii();
 
-	cout << termcolor::white << "Enter process name (eg. csgo.exe): ";
+	cout << termcolor::white << "Enter process name (eg. notepad.exe): ";
 	cin >> procname;
 
 	cout << termcolor::white << "Enter dll name (eg. base.dll): ";
@@ -24,8 +23,6 @@ int main(int argc, char* argv[])
 		Sleep(10000);
 		return 0;
 	}
-
-	//WinExec("C:\\Program FIles (x86)\\Steam\\steam.exe -applaunch 730", 0);
 
 	DWORD processid = findprocessid(procname);
 
