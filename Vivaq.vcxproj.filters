@@ -15,27 +15,30 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
+    <ClCompile Include="source\injector.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="injector.cpp">
+    <ClCompile Include="source\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="random.cpp">
+    <ClCompile Include="source\random.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="random.h">
+    <ClInclude Include="source\headers\includes.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="includes.h">
+    <ClInclude Include="source\headers\main.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="termcolor.h">
+    <ClInclude Include="source\headers\random.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="main.h">
+    <ClInclude Include="source\headers\termcolor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="injector.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

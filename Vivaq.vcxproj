@@ -128,15 +128,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="injector.cpp" />
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="random.cpp" />
+    <ClCompile Include="source\injector.cpp" />
+    <ClCompile Include="source\main.cpp" />
+    <ClCompile Include="source\random.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="includes.h" />
-    <ClInclude Include="main.h" />
-    <ClInclude Include="random.h" />
-    <ClInclude Include="termcolor.h" />
+    <ClInclude Include="injector.h" />
+    <ClInclude Include="source\headers\includes.h" />
+    <ClInclude Include="source\headers\main.h" />
+    <ClInclude Include="source\headers\random.h" />
+    <ClInclude Include="source\headers\termcolor.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

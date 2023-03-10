@@ -8,5 +8,6 @@
 #include "random.h"
 #include "termcolor.h"
 #include "main.h"
+#include "../injector.h"
 
 using namespace std;

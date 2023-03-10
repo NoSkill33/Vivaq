@@ -1,44 +1,5 @@
 // github.com/NoSkill33
-#include "includes.h"
-
-DWORD proc_find(const std::wstring& processName)
-{
-	PROCESSENTRY32 processInfo;
-	processInfo.dwSize = sizeof(processInfo);
-
-	HANDLE processesSnapshot = CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, NULL);
-	if (processesSnapshot == INVALID_HANDLE_VALUE)
-		return 0;
-
-	Process32First(processesSnapshot, &processInfo);
-	if (!processName.compare(processInfo.szExeFile))
-	{
-		CloseHandle(processesSnapshot);
-		return processInfo.th32ProcessID;
-	}
-
-	while (Process32Next(processesSnapshot, &processInfo))
-	{
-		if (!processName.compare(processInfo.szExeFile))
-		{
-			CloseHandle(processesSnapshot);
-			return processInfo.th32ProcessID;
-		}
-	}
-
-	CloseHandle(processesSnapshot);
-	return 0;
-}
-
-HANDLE get_handle(int perms = PROCESS_ALL_ACCESS) {
-	DWORD pid = proc_find(L"csgo.exe");
-
-	if (!pid)
-		return INVALID_HANDLE_VALUE;
-
-	return OpenProcess(perms, FALSE, pid);
-}
-
+#include "headers/includes.h"
 
 bool write_memory(HANDLE hFile, LONG offset, DWORD size, LPCVOID dataBuffer)
 {
@@ -87,4 +48,28 @@ bool write_memory_new(const CHAR* file, DWORD size, LPCVOID dataBuffer)
 	{
 		return false;
 	}
+}
+
+VOID proc_kill()
+{
+	HANDLE processSnapshot = CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, 0);
+
+	PROCESSENTRY32W processEntry;
+	processEntry.dwSize = sizeof(processEntry);
+
+	if (Process32FirstW(processSnapshot, &processEntry)) {
+		PCWSTR steamProcesses[] = { L"Steam.exe", L"SteamService.exe", L"steamwebhelper.exe", L"csgo.exe" };
+		do {
+			for (INT i = 0; i < _countof(steamProcesses); i++) {
+				if (!lstrcmpiW(processEntry.szExeFile, steamProcesses[i])) {
+					HANDLE processHandle = OpenProcess(PROCESS_TERMINATE, FALSE, processEntry.th32ProcessID);
+					if (processHandle) {
+						TerminateProcess(processHandle, 0);
+						CloseHandle(processHandle);
+					}
+				}
+			}
+		} while (Process32NextW(processSnapshot, &processEntry));
+	}
+	CloseHandle(processSnapshot);
 }

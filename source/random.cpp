@@ -1,5 +1,15 @@
 // github.com/NoSkill33
-#include "includes.h"
+#include "headers/includes.h"
+
+VOID ascii()
+{
+	cout << " _    ___                  " << endl;
+	cout << "| |  / (_)   ______ _____ _" << endl;
+	cout << "| | / / / | / / __ `/ __ `/" << endl;
+	cout << "| |/ / /| |/ / /_/ / /_/ / " << endl;
+	cout << "|___/_/ |___/ __,_/ __, /  " << endl;
+	cout << "                     /_/   \n" << endl;
+}
 
 string random_string(const size_t length)
 {
